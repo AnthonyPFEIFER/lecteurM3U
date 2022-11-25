@@ -58,6 +58,7 @@ const Section = ({children, title}): Node => {
   );
 };
 
+
 const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
@@ -65,16 +66,32 @@ const App: () => Node = () => {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
+
+
+
+
   return (
-    <View >
-        <Text> Hello World </Text>
+    <View>
+      <Section>
+        <Text> Lecteur d'une vidéo lambda</Text>
         <Video
-        source={{ uri: 'https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4?_=1' }}
+        source={{ uri: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4' }}
         style={{ width: 300, height: 300 }}
         controls={true}
         ref={(ref) => {
         this.player = ref
         }} />
+      </Section>
+      <Section>
+          <Text> Lecteur pour fichiers M3U8 </Text>
+          <Video
+          source={{ uri: 'http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8' }}
+          style={{ width: 300, height: 300 }}
+          controls={true}
+          ref={(ref) => {
+          this.player = ref
+          }} />
+      </Section>
     </View>
   );
 };
@@ -97,5 +114,6 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
 });
+
 
 export default App;
